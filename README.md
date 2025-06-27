@@ -28,6 +28,18 @@ Um neue CO₂-Daten einzugeben oder bestehende zu bearbeiten, nutzen Sie bitte d
 🔒 Diese Zugangsdaten sind im Prototyp hardcodiert in der `LoginBean.java`.
 ---
 
+
+### 🔧 Lokales Setup
+
+Rufe im Browser auf:
+
+Frontend für Bürger:innen:
+http://localhost:8080/co2-app/public.xhtml
+
+Login für Forschende:
+http://localhost:8080/co2-app/login.xhtml
+
+---
 ## ⚙️ Technologiestack
 
 - Java 11
