@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Eintrag bearbeiten</title>
+</h:head>
+
+<h:body>
+<h:form style="float: right;">
+    <h:commandButton value="Logout" action="#{loginBean.logout}" />
+</h:form>
+
+
+    <h:form>
+        <h2>CO₂-Eintrag bearbeiten</h2>
+
+        <h:messages globalOnly="true" layout="table" style="color: green;" />
+
+        <h:panelGrid columns="2">
+            <h:outputLabel for="country" value="Land:" />
+            <h:inputText id="country" value="#{emissionBean.selected.country}" required="true" />
+
+            <h:outputLabel for="year" value="Jahr:" />
+            <h:inputText id="year" value="#{emissionBean.selected.year}" required="true">
+                <f:convertNumber integerOnly="true" />
+            </h:inputText>
+
+            <h:outputLabel for="co2" value="CO₂-Wert (Mt):" />
+            <h:inputText id="co2" value="#{emissionBean.selected.co2Value}" required="true">
+                <f:convertNumber />
+            </h:inputText>
+        </h:panelGrid>
+
+        <br />
+        <h:commandButton value="Speichern" action="#{emissionBean.update}" />
+        <h:link value="Zurück zur Übersicht" outcome="index.xhtml" />
+    </h:form>
+
+</h:body>
+</html>

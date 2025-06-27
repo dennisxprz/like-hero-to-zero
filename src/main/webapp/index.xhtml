@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>CO₂-Emissionen</title>
+</h:head>
+
+<h:body>
+
+    <!-- 🔓 Logout-Button (rechts oben) -->
+    <h:form style="float: right;">
+        <h:commandButton value="Logout" action="#{loginBean.logout}" />
+    </h:form>
+
+    <h2>Übersicht der CO₂-Emissionen</h2>
+
+    <!-- ✅ Erfolgs-/Fehlermeldungen -->
+    <h:messages globalOnly="true" layout="table" style="color: green;" />
+
+    <!-- 🌍 CO₂-Tabelle mit Aktionen -->
+    <h:form>
+        <h:dataTable value="#{emissionBean.emissionList}" var="emission" border="1">
+            <f:facet name="header">
+                <h:outputText value="CO₂-Emissionen" />
+            </f:facet>
+
+            <h:column>
+                <f:facet name="header">Land</f:facet>
+                #{emission.country}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Jahr</f:facet>
+                #{emission.year}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">CO₂-Wert (Mt)</f:facet>
+                #{emission.co2Value}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">Aktion</f:facet>
+
+                <h:commandButton value="Bearbeiten" action="edit.xhtml">
+                    <f:setPropertyActionListener target="#{emissionBean.selected}" value="#{emission}" />
+                </h:commandButton>
+
+                <h:commandButton value="Löschen"
+                                 action="#{emissionBean.delete(emission)}"
+                                 onclick="return confirm('Diesen Eintrag wirklich löschen?');" />
+            </h:column>
+        </h:dataTable>
+    </h:form>
+
+    <br />
+    <h:link value="Neuen Datensatz hinzufügen" outcome="add.xhtml" />
+
+</h:body>
+</html>

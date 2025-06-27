@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>CO₂-Ausstoß nach Land</title>
+</h:head>
+
+<h:body>
+    <h:form>
+
+        <h2>CO₂-Emissionen weltweit</h2>
+
+        <!-- ✅ Erfolgs-/Fehlermeldungen -->
+        <h:messages globalOnly="true" layout="table" style="color: red;" />
+
+        <!-- 🌍 Länderauswahl -->
+        <h:panelGrid columns="2" cellpadding="5">
+
+            <h:outputLabel value="Land auswählen:" for="countrySelect" />
+
+            <h:selectOneMenu id="countrySelect" value="#{emissionBean.selectedCountry}">
+                <f:selectItem itemLabel="-- Bitte wählen --" itemValue="" />
+                <f:selectItems value="#{emissionBean.distinctCountries}"
+                               var="country"
+                               itemValue="#{country}"
+                               itemLabel="#{country}" />
+            </h:selectOneMenu>
+
+            <h:outputLabel />
+            <h:commandButton value="Anzeigen" action="#{emissionBean.fetchLatestData}">
+                <f:ajax execute="@form" render="@form" />
+            </h:commandButton>
+
+        </h:panelGrid>
+
+        <br/>
+
+        <!-- ✅ CO₂-Daten anzeigen -->
+        <h:panelGroup rendered="#{not empty emissionBean.latestData}">
+            <h3 style="color: darkgreen;">Aktuellster Eintrag für: #{emissionBean.latestData.country}</h3>
+            <p>Jahr: #{emissionBean.latestData.year}</p>
+            <p>CO₂-Wert: #{emissionBean.latestData.co2Value} Mt</p>
+        </h:panelGroup>
+
+        <!-- ❌ Kein Datensatz gefunden -->
+        <h:panelGroup rendered="#{empty emissionBean.latestData and not empty emissionBean.selectedCountry}">
+            <p style="color: red;">⚠️ Kein Datensatz für dieses Land gefunden.</p>
+        </h:panelGroup>
+
+    </h:form>
+</h:body>
+</html>
