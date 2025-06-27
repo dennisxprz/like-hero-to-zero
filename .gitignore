@@ -1,0 +1,17 @@
+# Maven-Build-Verzeichnis
+target/
+
+# Java-Kompilat
+*.class
+
+# IntelliJ-Projektdateien
+.idea/
+*.iml
+
+# Logs und temporäre Dateien
+*.log
+*.tmp
+.DS_Store
+
+# WAR-Archive
+*.war
