@@ -16,6 +16,17 @@ Dieses Projekt ist ein Prototyp für eine Webanwendung zur Darstellung und Pfleg
 - Logout-Funktion
 
 ---
+## 🔐 Login für Wissenschaftler:innen
+
+Um neue CO₂-Daten einzugeben oder bestehende zu bearbeiten, nutzen Sie bitte den folgenden Zugang:
+
+| Feld         | Wert         |
+|--------------|--------------|
+| Benutzername | forschung    |
+| Passwort     | klima2024    |
+
+🔒 Diese Zugangsdaten sind im Prototyp hardcodiert in der `LoginBean.java`.
+---
 
 ## ⚙️ Technologiestack
 
