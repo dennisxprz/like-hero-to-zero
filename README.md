@@ -9,6 +9,7 @@ Dieses Projekt ist ein Prototyp für eine Webanwendung zur Darstellung und Pfleg
 ### Öffentlich zugänglich (ohne Login)
 - CO₂-Werte nach Land abrufen
 - Aktuellster Datensatz eines Landes anzeigen
+- Weiterleitung von der Login-Seite zur öffentlichen Ansicht (für Nicht-Forschende)
 
 ### Login-Bereich für Forschende
 - Neue CO₂-Datensätze eintragen
@@ -16,6 +17,7 @@ Dieses Projekt ist ein Prototyp für eine Webanwendung zur Darstellung und Pfleg
 - Logout-Funktion
 
 ---
+
 ## 🔐 Login für Wissenschaftler:innen
 
 Um neue CO₂-Daten einzugeben oder bestehende zu bearbeiten, nutzen Sie bitte den folgenden Zugang:
@@ -26,28 +28,29 @@ Um neue CO₂-Daten einzugeben oder bestehende zu bearbeiten, nutzen Sie bitte d
 | Passwort     | klima2024    |
 
 🔒 Diese Zugangsdaten sind im Prototyp hardcodiert in der `LoginBean.java`.
----
 
+---
 
 ### 🔧 Lokales Setup
 
 Rufe im Browser auf:
 
-Frontend für Bürger:innen:
-http://localhost:8080/co2-app/public.xhtml
+Frontend für Bürger:innen:  
+http://localhost:8081/co2-app/public.xhtml
 
-Login für Forschende:
-http://localhost:8080/co2-app/login.xhtml
+Login für Forschende:  
+http://localhost:8081/co2-app/login.xhtml
 
 ---
+
 ## ⚙️ Technologiestack
 
 - Java 11
 - Jakarta EE (JSF, CDI, JPA)
-- Hibernate (JPA Provider)
-- Apache Derby (Datenbank)
+- OpenJPA (JPA Provider)
+- MySQL (Datenbank) – Achtung: Aktuell konfigurierte DB-Verbindung
 - Maven (Projektverwaltung)
-- TomEE (Server)
+- Apache TomEE (Server)
 
 ---
 
@@ -57,6 +60,7 @@ http://localhost:8080/co2-app/login.xhtml
 - Java JDK 11 oder höher
 - Apache TomEE (oder kompatibler Java EE Server)
 - Maven
+- MySQL-Datenbank (korrekt konfiguriert und gestartet)
 - Git (optional)
 
 ### Schritte:
@@ -65,5 +69,7 @@ http://localhost:8080/co2-app/login.xhtml
 git clone https://github.com/dennisxprz/like-hero-to-zero.git
 cd like-hero-to-zero
 
-# In Eclipse importieren oder per Maven bauen
+# Maven Build
 mvn clean install
+
+# Deployment auf TomEE (entweder über IDE oder manuell)
