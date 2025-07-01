@@ -1,8 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
                              http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.likeherotozero</groupId>
@@ -11,6 +12,10 @@
     <packaging>war</packaging>
 
     <name>LikeHeroToZero</name>
+    <build>
+    <finalName>co2-app</finalName>
+</build>
+
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -20,21 +25,13 @@
     </properties>
 
     <dependencies>
-        <!-- JSF API -->
+        <!-- JSF -->
         <dependency>
-            <groupId>jakarta.faces</groupId>
-            <artifactId>jakarta.faces-api</artifactId>
-            <version>3.0.0</version>
-            <scope>provided</scope>
+            <groupId>org.glassfish</groupId>
+            <artifactId>jakarta.faces</artifactId>
+            <version>3.0.1</version>
+             <scope>provided</scope>
         </dependency>
-        
-        <dependency>
-    <groupId>jakarta.transaction</groupId>
-    <artifactId>jakarta.transaction-api</artifactId>
-    <version>2.0.0</version>
-</dependency>
-
-
 
         <!-- CDI -->
         <dependency>
@@ -51,20 +48,25 @@
             <version>3.0.0</version>
         </dependency>
 
-        <!-- Hibernate (JPA Provider) -->
+        <!-- Hibernate JPA Provider -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>5.6.15.Final</version>
         </dependency>
 
-        <!-- Apache Derby DB -->
+        <!-- MySQL Connector -->
         <dependency>
-    <groupId>org.apache.derby</groupId>
-    <artifactId>derby</artifactId>
-    <version>10.15.2.0</version>
-    </dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>8.0.33</version>
+        </dependency>
 
+<dependency>
+    <groupId>jakarta.transaction</groupId>
+    <artifactId>jakarta.transaction-api</artifactId>
+    <version>2.0.0</version>
+</dependency>
 
         <!-- Servlet API -->
         <dependency>
@@ -74,8 +76,4 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <finalName>co2-app</finalName>
-    </build>
 </project>

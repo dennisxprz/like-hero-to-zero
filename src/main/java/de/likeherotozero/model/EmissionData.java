@@ -1,13 +1,14 @@
 package de.likeherotozero.model;
 
-
-import jakarta.persistence.*; // kein javax!
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 
+
 @Entity
+@Table(name = "emission_data")
 public class EmissionData {
 
     @Id

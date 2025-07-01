@@ -5,7 +5,6 @@ import jakarta.inject.Named;
 import jakarta.faces.context.FacesContext;
 
 import java.io.Serializable;
-import java.io.IOException;
 
 @Named
 @SessionScoped
@@ -28,20 +27,13 @@ public class LoginBean implements Serializable {
         return loggedIn;
     }
 
-    public void logout() {
+    public String logout() {
         loggedIn = false;
         username = null;
         password = null;
 
-        // Session invalidieren
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        facesContext.getExternalContext().invalidateSession();
-
-        try {
-            facesContext.getExternalContext().redirect("login.xhtml");
-        } catch (IOException e) {
-            e.printStackTrace(); // optional: Logging
-        }
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return "/login.xhtml?faces-redirect=true";
     }
 
     // Getter & Setter

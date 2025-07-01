@@ -14,25 +14,25 @@
     <h:commandButton value="Logout" action="#{loginBean.logout}" />
 </h:form>
 
+<h:form>
+    <h2>Neuen CO₂-Datensatz eingeben</h2>
 
-    <h:form>
-        <h2>Neuen CO₂-Datensatz eingeben</h2>
+    <h:panelGrid columns="2">
+        <h:outputLabel for="country" value="Land:" />
+        <h:inputText id="country" value="#{emissionBean.newData.country}" />
 
-        <h:panelGrid columns="2">
-            <h:outputLabel for="country" value="Land:" />
-            <h:inputText id="country" value="#{emissionBean.newData.country}" />
+        <h:outputLabel for="year" value="Jahr:" />
+        <h:inputText id="year" value="#{emissionBean.newData.year}" />
 
-            <h:outputLabel for="year" value="Jahr:" />
-            <h:inputText id="year" value="#{emissionBean.newData.year}" />
+        <h:outputLabel for="co2" value="CO₂-Wert (Mt):" />
+        <h:inputText id="co2" value="#{emissionBean.newData.co2Value}" />
+    </h:panelGrid>
 
-            <h:outputLabel for="co2" value="CO₂-Wert (Mt):" />
-            <h:inputText id="co2" value="#{emissionBean.newData.co2Value}" />
-        </h:panelGrid>
+    <br />
+    <h:commandButton value="Speichern" action="#{emissionBean.save}" />
+</h:form>
 
-        <br />
-        <h:commandButton value="Speichern" action="#{emissionBean.save}" />
-    </h:form>
-   <br/> 
+<br/>
 <h:link value="Zur Übersicht" outcome="index.xhtml" />
 
 </h:body>

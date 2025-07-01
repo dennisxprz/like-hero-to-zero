@@ -19,6 +19,10 @@
 
         <br/>
         <h:commandButton value="Login" action="#{loginBean.login}" />
+        
+        <br/><br/>
+        <!-- Button zur Weiterleitung auf public.xhtml -->
+        <h:commandButton value="Zum öffentlichen Bereich" action="public.xhtml?faces-redirect=true" immediate="true" />
     </h:form>
 
 </h:body>

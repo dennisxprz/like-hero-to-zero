@@ -109,11 +109,14 @@ public class EmissionBean implements Serializable {
         try {
             entityManager.persist(newData);
             addMessage("✅ Datensatz erfolgreich gespeichert: " + newData.getCountry());
+            newData = new EmissionData(); // Formular zurücksetzen
         } catch (Exception e) {
-            addMessage("❌ Fehler beim Speichern!");
+            e.printStackTrace();  // Hier Fehler ins Server-Log schreiben
+            addMessage("❌ Fehler beim Speichern: " + e.getMessage());
         }
         return "index.xhtml?faces-redirect=true";
     }
+
 
     @Transactional
     public String update() {
