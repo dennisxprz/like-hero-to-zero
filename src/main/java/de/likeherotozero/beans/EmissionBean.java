@@ -88,17 +88,27 @@ public class EmissionBean implements Serializable {
 
         try {
             latestData = entityManager.createQuery(
-                    "SELECT e FROM EmissionData e WHERE e.country = :country AND e.year = (" +
-                            "SELECT MAX(e2.year) FROM EmissionData e2 WHERE e2.country = :country)",
-                    EmissionData.class)
-                    .setParameter("country", selectedCountry)
-                    .getSingleResult();
+                "SELECT e FROM EmissionData e " +
+                "WHERE e.country = :country " +
+                "ORDER BY e.year DESC, e.id ASC",  // ID als sekundäres Sortierkriterium
+                EmissionData.class)
+                .setParameter("country", selectedCountry)
+                .setMaxResults(1)  // nur ein Ergebnis zurückgeben
+                .getResultList()
+                .stream()
+                .findFirst()
+                .orElse(null);
+
+            if (latestData == null) {
+                addMessage("⚠️ Kein Datensatz für dieses Land gefunden.");
+            }
+
         } catch (Exception e) {
-            // Optional: Logger verwenden statt e.printStackTrace()
             latestData = null;
-            addMessage("⚠️ Es konnte kein aktueller Datensatz gefunden werden.");
+            addMessage("❌ Fehler beim Abrufen der Daten.");
         }
     }
+
 
     // ========================
     // CRUD-Methoden
